@@ -1114,7 +1114,7 @@ header nav {
     grid-column: span 2;
 }
 
-.modern-form input {
+.modern-form input:not([type="checkbox"]) {
     width: 100%;
     height: 52px;
     border-radius: 26px;
@@ -1176,6 +1176,56 @@ header nav {
     cursor: pointer;
 }
 
+/* Custom Checkbox Styles */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    height: 14px;
+    width: 14px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.checkbox-container:hover input~.checkmark {
+    border-color: var(--primary);
+}
+
+.checkbox-container input:checked~.checkmark {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked~.checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 4px;
+    top: 1px;
+    width: 3px;
+    height: 7px;
+    border: solid white;
+    border-width: 0 1.5px 1.5px 0;
+    transform: rotate(45deg);
+}
+
 .w-full {
     width: 100%;
 }
@@ -1190,56 +1240,6 @@ header nav {
 
     .register-contact-methods {
         align-items: center;
-    }
-
-    .modern-form .form-row {
-        grid-template-columns: 1fr;
-    }
-
-    /* Custom Checkbox Styles */
-    .checkbox-container input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-    }
-
-    .checkmark {
-        height: 14px;
-        width: 14px;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 3px;
-    }
-
-    .checkbox-container:hover input~.checkmark {
-        border-color: var(--primary);
-    }
-
-    .checkbox-container input:checked~.checkmark {
-        background-color: var(--primary);
-        border-color: var(--primary);
-    }
-
-    .checkmark:after {
-        content: "";
-        position: absolute;
-        display: none;
-    }
-
-    .checkbox-container input:checked~.checkmark:after {
-        display: block;
-    }
-
-    .checkbox-container .checkmark:after {
-        left: 4px;
-        top: 1px;
-        width: 3px;
-        height: 7px;
-        border: solid white;
-        border-width: 0 1.5px 1.5px 0;
-        transform: rotate(45deg);
     }
 
     .about-visual {

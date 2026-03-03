@@ -1,12 +1,20 @@
+// Supabase Configuration
+const SUPABASE_URL = 'https://isvhmsatlnwykmwukurh.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_4lFHcw3ymRZBCN_tlmCE7Q_pW_qhaS1';
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
 // Basic interactivity
 document.addEventListener('DOMContentLoaded', () => {
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 
@@ -212,9 +220,55 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Re-render icons
-            lucide.createIcons();
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
         });
     });
+
+    // Registration Form Submission to Supabase
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.textContent;
+
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            const formData = {
+                company_name: document.getElementById('company_name').value,
+                siren_vat_number: document.getElementById('siren_vat').value,
+                contact_name: document.getElementById('contact_name').value,
+                professional_email: document.getElementById('email').value,
+                phone_number: document.getElementById('phone').value,
+                country: document.getElementById('country').value,
+                business_address: document.getElementById('address').value,
+                receive_news: document.getElementById('news_offers').checked
+            };
+
+            try {
+                const { data, error } = await supabaseClient
+                    .from('registrations')
+                    .insert([formData]);
+
+                if (error) throw error;
+
+                // Success
+                alert('Success! Your request has been submitted.');
+                contactForm.reset();
+            } catch (error) {
+                console.error('Error submitting to Supabase:', error);
+                alert('Error: ' + error.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            }
+        });
+    }
 
     // Initial Render
     renderProducts('optic');

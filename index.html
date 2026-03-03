@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <header id="header">
@@ -412,41 +414,34 @@
                 <div class="register-form-container">
                     <form id="contactForm" class="modern-form">
                         <div class="form-group">
-                            <input type="text" placeholder="Company*" required>
+                            <input type="text" id="company_name" placeholder="Company*" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="SIREN / VAT number*" required>
+                            <input type="text" id="siren_vat" placeholder="SIREN / VAT number*" required>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" placeholder="Contact Name*" required>
+                            <input type="text" id="contact_name" placeholder="Contact Name*" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Professional Email*" required>
+                            <input type="email" id="email" placeholder="Professional Email*" required>
                         </div>
 
                         <div class="form-group">
-                            <input type="tel" placeholder="Phone Number*" required>
+                            <input type="tel" id="phone" placeholder="Phone Number*" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Country*" required>
-                        </div>
-
-                        <div class="form-group full-width">
-                            <input type="text" placeholder="Business Address*" required>
+                            <input type="text" id="country" placeholder="Country*" required>
                         </div>
 
                         <div class="form-group full-width">
-                            <input type="password" placeholder="Password*" required>
+                            <input type="text" id="address" placeholder="Business Address*" required>
                         </div>
 
-                        <div class="form-group full-width">
-                            <input type="password" placeholder="Confirm Password*" required>
-                        </div>
 
                         <div class="form-options">
                             <label class="checkbox-container">
-                                <input type="checkbox" style="width: 20px; height: 20px;">
+                                <input type="checkbox" id="news_offers">
                                 <span class="checkmark"></span>
                                 Receive news & offers
                             </label>
@@ -491,7 +486,9 @@
 
     <script src="script.js"></script>
     <script>
-        lucide.createIcons();
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
     </script>
 </body>
 </html>

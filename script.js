@@ -5,6 +5,50 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // Basic interactivity
 document.addEventListener('DOMContentLoaded', () => {
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navOverlay = document.querySelector('.nav-overlay');
+
+    function closeMenu() {
+        if (navLinks) navLinks.classList.remove('active');
+        if (navOverlay) navOverlay.classList.remove('active');
+
+        const toggleBtn = document.querySelector('.mobile-menu-toggle');
+        const icon = toggleBtn ? toggleBtn.querySelector('i, svg') : null;
+        if (icon) {
+            icon.setAttribute('data-lucide', 'menu');
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }
+    }
+
+    if (mobileMenuToggle && navLinks) {
+        mobileMenuToggle.addEventListener('click', () => {
+            const isOpened = navLinks.classList.toggle('active');
+            if (navOverlay) navOverlay.classList.toggle('active');
+
+            const icon = mobileMenuToggle.querySelector('i, svg');
+            if (icon) {
+                icon.setAttribute('data-lucide', isOpened ? 'x' : 'menu');
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            }
+        });
+
+        // Close menu when clicking overlay
+        if (navOverlay) {
+            navOverlay.addEventListener('click', closeMenu);
+        }
+
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    }
+
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {

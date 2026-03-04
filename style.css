@@ -252,9 +252,9 @@ header nav {
 
 .hero-headline h1 {
     font-size: var(--h1-size);
-    font-weight: 800;
+    font-weight: 600;
     line-height: 1.1;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.01em;
 }
 
 .hero-headline h1 .highlight {
@@ -285,8 +285,10 @@ header nav {
     margin-bottom: 3rem;
 }
 
-.mobile-btns {
-    display: none;
+/* Button styles */
+.hero-btns {
+    display: flex;
+    gap: 1.5rem;
 }
 
 .hero-btns {
@@ -730,15 +732,15 @@ header nav {
 
 /* How it Works Section */
 .how-it-works {
-    padding: 8rem 0;
-    background: #fff5ec;
+    padding: 6rem 0;
+    background: #fdfdfd;
     overflow: hidden;
 }
 
 .workflow-layout {
     display: flex;
-    align-items: center;
-    gap: 8rem;
+    align-items: flex-start;
+    gap: 6rem;
 }
 
 .workflow-header {
@@ -746,83 +748,85 @@ header nav {
 }
 
 .workflow-header h2 {
-    font-size: 3rem;
-    font-weight: 700;
+    font-size: var(--h2-size);
+    font-weight: 800;
     margin-bottom: 0.5rem;
-}
-
-.subtitle {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 4rem;
+    color: #1a1a1a;
 }
 
 .workflow-steps-vertical {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 1.5rem;
     position: relative;
-    padding-left: 10px;
-}
-
-/* Vertical line */
-.workflow-steps-vertical::before {
-    content: '';
-    position: absolute;
-    left: 35px;
-    top: 30px;
-    bottom: 30px;
-    width: 2px;
-    background: var(--primary);
-    opacity: 0.3;
+    padding-top: 2rem;
 }
 
 .step-item {
     display: flex;
-    gap: 2.5rem;
-    padding-bottom: 4rem;
+    gap: 2rem;
     position: relative;
     z-index: 1;
 }
 
-.step-item:last-child {
-    padding-bottom: 0;
+/* Connecting lines between steps */
+.step-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 45px;
+    bottom: -15px;
+    width: 2px;
+    background: #ff6b00;
+    opacity: 0.6;
 }
 
 .step-number {
-    width: 50px;
-    height: 50px;
-    background: var(--primary);
+    width: 42px;
+    height: 42px;
+    background: #ff6b00;
     color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 700;
     flex-shrink: 0;
-    box-shadow: 0 4px 15px rgba(255, 107, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(255, 107, 0, 0.3);
+    border: 2px solid white;
 }
 
-.dark-step .step-number {
+.step-item.dark-step .step-number {
     background: #1a1a1a;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.step-item.dark-step::after {
+    background: #ff6b00;
+    /* Line remains orange in the design */
+}
+
+/* Specific styling for the second step circle as seen in image */
+.step-item:nth-child(2) .step-number {
+    background: #1a1a1a;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05), 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .step-label {
     display: block;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #888;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     font-weight: 600;
 }
 
 .step-content h4 {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 1.05rem;
+    font-weight: 700;
     color: #1a1a1a;
     line-height: 1.4;
-    max-width: 400px;
+    max-width: 450px;
 }
 
 .workflow-visual {
@@ -1255,10 +1259,10 @@ header nav {
 }
 
 .register-info h2 {
-    font-size: 3rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: #1a1a1a;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     line-height: 1.2;
 }
 
@@ -1554,14 +1558,13 @@ footer {
     .hero-headline h1 {
         font-size: var(--h1-size);
         letter-spacing: -0.02em;
+        font-weight: 600;
     }
 
-    .desktop-btns {
-        display: none;
-    }
-
-    .mobile-btns {
+    .hero-btns {
         display: flex;
+        justify-content: flex-start;
+        margin-top: 2rem;
     }
 
     .hero-title-container {
@@ -1643,6 +1646,25 @@ footer {
 
     .register-contact-methods {
         align-items: center;
+    }
+
+    .workflow-layout {
+        flex-direction: column;
+        gap: 3rem;
+        text-align: left;
+    }
+
+    .workflow-header {
+        width: 100%;
+    }
+
+    .step-item {
+        gap: 1.5rem;
+    }
+
+    .workflow-visual {
+        width: 100%;
+        margin-top: 2rem;
     }
 
     .testimonial-layout {

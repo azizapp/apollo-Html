@@ -13,6 +13,40 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Supabase JS -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Tailwind CSS v3 CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#FF6B00',
+                            light: '#FF8533',
+                        },
+                        dark: '#000000',
+                        light: '#F8F9FA',
+                        'text-main': '#1a1a1a',
+                        'text-muted': '#4a4a4a',
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    container: {
+                        center: true,
+                        padding: '1.5rem',
+                        screens: {
+                            sm: '100%',
+                            md: '100%',
+                            lg: '1024px',
+                            xl: '1280px',
+                            '2xl': '1300px',
+                        },
+                    },
+                }
+            }
+        }
+    </script>
 </head>
 <body>
     <header id="header">
@@ -66,11 +100,6 @@
                         </div>
                         <p>Apollo Partners is dedicated to helping optical shops source premium-quality frames with ease.<br>
                         We believe great eyewear starts with great partnerships, that's why we combine exceptional products, competitive pricing, and personalized service to support your business growth.</p>
-                        
-                        <div class="hero-btns mobile-btns">
-                            <button class="btn btn-primary">Get started</button>
-                            <button class="btn btn-outline">Our Collections</button>
-                        </div>
                         
                         <div class="decoration-star top-right-star">
                             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">

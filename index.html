@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Supabase JS -->
@@ -42,12 +42,20 @@
             <div class="container hero-layout">
                 <div class="hero-top">
                     <div class="hero-headline">
-                        <h1>Crafted for Opticians <span class="highlight">Who Demand Excellence</span></h1>
-                        <div class="hero-btns">
+                        <div class="hero-title-container">
+                            <h1>Crafted for Opticians <span class="highlight">Who Demand Excellence</span></h1>
+                            <div class="decoration-star-hero">
+                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 0L22.5 17.5L40 20L22.5 22.5L20 40L17.5 22.5L0 20L17.5 17.5L20 0Z" fill="black"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="hero-btns desktop-btns">
                             <button class="btn btn-primary">Get started</button>
-                            <button class="btn btn-outline">Discover Our Collections</button>
+                            <button class="btn btn-outline">Our Collections</button>
                         </div>
                     </div>
+                    
                     <div class="hero-info">
                         <div class="rating">
                             <i data-lucide="star" class="star-filled"></i>
@@ -58,6 +66,12 @@
                         </div>
                         <p>Apollo Partners is dedicated to helping optical shops source premium-quality frames with ease.<br>
                         We believe great eyewear starts with great partnerships, that's why we combine exceptional products, competitive pricing, and personalized service to support your business growth.</p>
+                        
+                        <div class="hero-btns mobile-btns">
+                            <button class="btn btn-primary">Get started</button>
+                            <button class="btn btn-outline">Our Collections</button>
+                        </div>
+                        
                         <div class="decoration-star top-right-star">
                             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M20 0L22.5 17.5L40 20L22.5 22.5L20 40L17.5 22.5L0 20L17.5 17.5L20 0Z" fill="black"/>
@@ -89,11 +103,18 @@
         <section class="partners-section">
             <div class="container">
                 <p class="partners-text">We have been working with some Fortune 500+ clients</p>
-                <div class="partners-logos">
-                    <span class="partner-logo">EPOPTIQUE</span>
-                    <span class="partner-logo">ALAIN AFFLELOU</span>
-                    <span class="partner-logo">OPTICALLA</span>
-                    <span class="partner-logo">Krys</span>
+                <div class="ticker-container">
+                    <div class="partners-logos">
+                        <span class="partner-logo">EPOPTIQUE</span>
+                        <span class="partner-logo">ALAIN AFFLELOU</span>
+                        <span class="partner-logo">OPTICALLA</span>
+                        <span class="partner-logo">Krys</span>
+                        <!-- Duplicate for seamless loop -->
+                        <span class="partner-logo">EPOPTIQUE</span>
+                        <span class="partner-logo">ALAIN AFFLELOU</span>
+                        <span class="partner-logo">OPTICALLA</span>
+                        <span class="partner-logo">Krys</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -199,9 +220,11 @@
             </div>
             
             <div class="benefits-footer">
-                <a href="#contact" class="btn1 btn-dark-pill">
-                    <i data-lucide="users"></i> Join Our Team
-                </a>
+                <div class="btn-container">
+                    <a href="#contact" class="btn btn-dark-pill">
+                        <i data-lucide="users"></i> Join Our Team
+                    </a>
+                </div>
             </div>
         </section>
 
